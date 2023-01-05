@@ -31,7 +31,10 @@
         <h2>API Documentation</h2>
             <ul class="memberlist">
             <li>
-                    <a class="function" href="#main">main</a>
+                    <a class="function" href="#hello">hello</a>
+            </li>
+            <li>
+                    <a class="function" href="#goodbye">goodbye</a>
             </li>
             <li>
                     <a class="function" href="#junk_function_for_coverage_report">junk_function_for_coverage_report</a>
@@ -65,39 +68,80 @@ However execution occurs in <code>__main__.py</code></p>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">However execution occurs in `__main__.py`</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="c1"># import typer</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">import</span> <span class="nn">typer</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;primary execution function&quot;&quot;&quot;</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">()</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Say hello to NAME&quot;&quot;&quot;</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="k">def</span> <span class="nf">goodbye</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">formal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Say goodbye to NAME&quot;&quot;&quot;</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">if</span> <span class="n">formal</span><span class="p">:</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Goodbye </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. It was a pleasure.&quot;</span><span class="p">)</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Later </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
             </section>
-                <section id="main">
-                            <input id="main-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                <section id="hello">
+                            <input id="hello-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">main</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+                    <div class="decorator">@app.command()</div>
 
-                <label class="view-source-button" for="main-view-source"><span>View Source</span></label>
+        <span class="def">def</span>
+        <span class="name">hello</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="hello-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#main"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="main-10"><a href="#main-10"><span class="linenos">10</span></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="main-11"><a href="#main-11"><span class="linenos">11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;primary execution function&quot;&quot;&quot;</span>
-</span><span id="main-12"><a href="#main-12"><span class="linenos">12</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <a class="headerlink" href="#hello"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="hello-12"><a href="#hello-12"><span class="linenos">12</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="hello-13"><a href="#hello-13"><span class="linenos">13</span></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="hello-14"><a href="#hello-14"><span class="linenos">14</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Say hello to NAME&quot;&quot;&quot;</span>
+</span><span id="hello-15"><a href="#hello-15"><span class="linenos">15</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>primary execution function</p>
+            <div class="docstring"><p>Say hello to NAME</p>
+</div>
+
+
+                </section>
+                <section id="goodbye">
+                            <input id="goodbye-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@app.command()</div>
+
+        <span class="def">def</span>
+        <span class="name">goodbye</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">formal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="goodbye-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#goodbye"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="goodbye-18"><a href="#goodbye-18"><span class="linenos">18</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="goodbye-19"><a href="#goodbye-19"><span class="linenos">19</span></a><span class="k">def</span> <span class="nf">goodbye</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">formal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="goodbye-20"><a href="#goodbye-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Say goodbye to NAME&quot;&quot;&quot;</span>
+</span><span id="goodbye-21"><a href="#goodbye-21"><span class="linenos">21</span></a>    <span class="k">if</span> <span class="n">formal</span><span class="p">:</span>
+</span><span id="goodbye-22"><a href="#goodbye-22"><span class="linenos">22</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Goodbye </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. It was a pleasure.&quot;</span><span class="p">)</span>
+</span><span id="goodbye-23"><a href="#goodbye-23"><span class="linenos">23</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="goodbye-24"><a href="#goodbye-24"><span class="linenos">24</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Later </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Say goodbye to NAME</p>
 </div>
 
 
@@ -113,9 +157,9 @@ However execution occurs in <code>__main__.py</code></p>
 
     </div>
     <a class="headerlink" href="#junk_function_for_coverage_report"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="junk_function_for_coverage_report-15"><a href="#junk_function_for_coverage_report-15"><span class="linenos">15</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="junk_function_for_coverage_report-16"><a href="#junk_function_for_coverage_report-16"><span class="linenos">16</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
-</span><span id="junk_function_for_coverage_report-17"><a href="#junk_function_for_coverage_report-17"><span class="linenos">17</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="junk_function_for_coverage_report-27"><a href="#junk_function_for_coverage_report-27"><span class="linenos">27</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="junk_function_for_coverage_report-28"><a href="#junk_function_for_coverage_report-28"><span class="linenos">28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
+</span><span id="junk_function_for_coverage_report-29"><a href="#junk_function_for_coverage_report-29"><span class="linenos">29</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
