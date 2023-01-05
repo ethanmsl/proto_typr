@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "proto-typr"
+version = "0.1.0"
+description = ""
+authors = ["Ethan Skowronski-Lutz <33399972+ethanmsl@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "proto_typr", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = {extras = ["all"], version = "^0.7.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+coverage = "^7.0.3"
+isort = "^5.11.4"
+pdoc = "^12.3.0"
+pylint = "^2.15.9"
+pyright = "^1.1.287"
+pytest = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+# compatibility with Black formatter
+profile = "black"
+
+
+# [tool.pylint]
+# disable = [
+#     "R0903",  # Too few public methods
+# ]
+
+[tool.pylint.format]
+# line length to match Black formatter
+max-line-length = "88"
+
+
+[tool.pyright]
+include = ["src"]
+exclude = [".venv",
+    "src/experimental",
+    "src/typestubs",
+  "**/__pycache__"
+]
+# utilizing the fact that we've set Poetry `virtualenv.in-project` to true
+venvPath = "."
+venv = ".venv"
+
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportMissingTypeStubs = true
+
+executionEnvironments = [
+  { root = "src" }
+]
+
+
+[tool.pytest.ini_options]
+# adds the following paths to pythonpath, specified relative to root dir
+pythonpath = [
+    "src",
+]
