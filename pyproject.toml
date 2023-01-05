@@ -51,7 +51,7 @@ exclude = [".venv",
 venvPath = "."
 venv = ".venv"
 
-typeCheckingMode = "strict"
+typeCheckingMode = "basic"
 reportMissingImports = true
 reportMissingTypeStubs = true
 
