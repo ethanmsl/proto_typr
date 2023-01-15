@@ -16,7 +16,11 @@ def hello(name: str) -> None:
 
 @app.command()
 def goodbye(name: str, formal: bool = False) -> None:
-    """Say goodbye to NAME"""
+    """
+    Say goodbye to `NAME`
+
+    --formal: Use a formal goodbye
+    """
     if formal:
         print(f"Goodbye {name}. It was a pleasure.")
     else:
