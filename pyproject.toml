@@ -1,10 +1,13 @@
 [tool.poetry]
 name = "proto-typr"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Ethan Skowronski-Lutz <33399972+ethanmsl@users.noreply.github.com>"]
 readme = "README.md"
 packages = [{include = "proto_typr", from = "src"}]
+
+[tool.poetry.scripts]
+proto-typr = "proto_typr.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
