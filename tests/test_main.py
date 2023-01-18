@@ -24,6 +24,17 @@ def test_goodbye() -> None:
     assert main.goodbye("Madam Gloomba", True) is None
 
 
+def test_print_rows() -> None:
+    """Print rows from a file"""
+    location: str = "inclusion_dir/some_rows.csv"
+    assert main.print_rows(location) is None
+
+
+def test_print_cwd() -> None:
+    """Print the current working directory"""
+    assert main.print_cwd() is None
+
+
 def test_junk_function_for_coverage_report() -> None:
     """test of junk function for coverage report"""
     assert main.junk_function_for_coverage_report() is None
