@@ -29,6 +29,13 @@ def goodbye(name: str, formal: bool = False) -> None:
         print(f"Later {name}.")
 
 
+@app.command(short_help="Run an OS command")
+def oscmmd() -> None:
+    """Run the oscmmd"""
+    cmd: str = r'echo "testtttting" >> boop.txt'
+    print(os.system(cmd))
+
+
 @app.command()
 def print_rows(location: str) -> None:
     """Print rows from a file"""
