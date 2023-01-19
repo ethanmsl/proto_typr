@@ -37,6 +37,9 @@
                     <a class="function" href="#goodbye">goodbye</a>
             </li>
             <li>
+                    <a class="function" href="#oscmmd">oscmmd</a>
+            </li>
+            <li>
                     <a class="function" href="#print_rows">print_rows</a>
             </li>
             <li>
@@ -100,23 +103,30 @@ However execution occurs in <code>__main__.py</code></p>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Later </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="k">def</span> <span class="nf">print_rows</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print rows from a file&quot;&quot;&quot;</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">short_help</span><span class="o">=</span><span class="s2">&quot;Run an OS command&quot;</span><span class="p">)</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="k">def</span> <span class="nf">oscmmd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the oscmmd&quot;&quot;&quot;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;echo &quot;testtttting&quot; &gt;&gt; boop.txt&#39;</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="k">def</span> <span class="nf">print_cwd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the current working directory&quot;&quot;&quot;</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="k">def</span> <span class="nf">print_rows</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print rows from a file&quot;&quot;&quot;</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="k">def</span> <span class="nf">print_cwd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the current working directory&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -178,6 +188,31 @@ However execution occurs in <code>__main__.py</code></p>
 
 
                 </section>
+                <section id="oscmmd">
+                            <input id="oscmmd-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@app.command(short_help=&#39;Run an OS command&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">oscmmd</span><span class="signature pdoc-code condensed">(<span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="oscmmd-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#oscmmd"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="oscmmd-33"><a href="#oscmmd-33"><span class="linenos">33</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">short_help</span><span class="o">=</span><span class="s2">&quot;Run an OS command&quot;</span><span class="p">)</span>
+</span><span id="oscmmd-34"><a href="#oscmmd-34"><span class="linenos">34</span></a><span class="k">def</span> <span class="nf">oscmmd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="oscmmd-35"><a href="#oscmmd-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the oscmmd&quot;&quot;&quot;</span>
+</span><span id="oscmmd-36"><a href="#oscmmd-36"><span class="linenos">36</span></a>    <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;echo &quot;testtttting&quot; &gt;&gt; boop.txt&#39;</span>
+</span><span id="oscmmd-37"><a href="#oscmmd-37"><span class="linenos">37</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run the oscmmd</p>
+</div>
+
+
+                </section>
                 <section id="print_rows">
                             <input id="print_rows-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -190,12 +225,12 @@ However execution occurs in <code>__main__.py</code></p>
 
     </div>
     <a class="headerlink" href="#print_rows"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="print_rows-33"><a href="#print_rows-33"><span class="linenos">33</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="print_rows-34"><a href="#print_rows-34"><span class="linenos">34</span></a><span class="k">def</span> <span class="nf">print_rows</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="print_rows-35"><a href="#print_rows-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print rows from a file&quot;&quot;&quot;</span>
-</span><span id="print_rows-36"><a href="#print_rows-36"><span class="linenos">36</span></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-</span><span id="print_rows-37"><a href="#print_rows-37"><span class="linenos">37</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-</span><span id="print_rows-38"><a href="#print_rows-38"><span class="linenos">38</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="print_rows-40"><a href="#print_rows-40"><span class="linenos">40</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="print_rows-41"><a href="#print_rows-41"><span class="linenos">41</span></a><span class="k">def</span> <span class="nf">print_rows</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="print_rows-42"><a href="#print_rows-42"><span class="linenos">42</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print rows from a file&quot;&quot;&quot;</span>
+</span><span id="print_rows-43"><a href="#print_rows-43"><span class="linenos">43</span></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="print_rows-44"><a href="#print_rows-44"><span class="linenos">44</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="print_rows-45"><a href="#print_rows-45"><span class="linenos">45</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -216,10 +251,10 @@ However execution occurs in <code>__main__.py</code></p>
 
     </div>
     <a class="headerlink" href="#print_cwd"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="print_cwd-41"><a href="#print_cwd-41"><span class="linenos">41</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="print_cwd-42"><a href="#print_cwd-42"><span class="linenos">42</span></a><span class="k">def</span> <span class="nf">print_cwd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="print_cwd-43"><a href="#print_cwd-43"><span class="linenos">43</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the current working directory&quot;&quot;&quot;</span>
-</span><span id="print_cwd-44"><a href="#print_cwd-44"><span class="linenos">44</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="print_cwd-48"><a href="#print_cwd-48"><span class="linenos">48</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="print_cwd-49"><a href="#print_cwd-49"><span class="linenos">49</span></a><span class="k">def</span> <span class="nf">print_cwd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="print_cwd-50"><a href="#print_cwd-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the current working directory&quot;&quot;&quot;</span>
+</span><span id="print_cwd-51"><a href="#print_cwd-51"><span class="linenos">51</span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 </span></pre></div>
 
 
@@ -239,9 +274,9 @@ However execution occurs in <code>__main__.py</code></p>
 
     </div>
     <a class="headerlink" href="#junk_function_for_coverage_report"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="junk_function_for_coverage_report-47"><a href="#junk_function_for_coverage_report-47"><span class="linenos">47</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="junk_function_for_coverage_report-48"><a href="#junk_function_for_coverage_report-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
-</span><span id="junk_function_for_coverage_report-49"><a href="#junk_function_for_coverage_report-49"><span class="linenos">49</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="junk_function_for_coverage_report-54"><a href="#junk_function_for_coverage_report-54"><span class="linenos">54</span></a><span class="k">def</span> <span class="nf">junk_function_for_coverage_report</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="junk_function_for_coverage_report-55"><a href="#junk_function_for_coverage_report-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;junk function for coverage report&quot;&quot;&quot;</span>
+</span><span id="junk_function_for_coverage_report-56"><a href="#junk_function_for_coverage_report-56"><span class="linenos">56</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;junk&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
