@@ -23,8 +23,31 @@ app.add_typer(pressure_app, name="pressure")
 app.add_typer(temperature_app, name="temperature")
 
 
+def hello_callback(value: str):
+    """Callback for hello option"""
+    if value != "Camila":
+        raise typer.BadParameter("Only Camila is allowed")
+    return value
+
+
+# NOTE: there must be a better way to get this from the pyproject.toml
+__version__ = "0.1.0"
+
+
+def version_callback(value: bool):
+    """Callback that returns app version"""
+    if value:
+        print(f"Awesome CLI Version: {__version__}")
+        raise typer.Exit()
+
+
 @app.command()
-def hello(name: str) -> None:
+def hello(
+    name: str = typer.Argument(..., callback=hello_callback),
+    version: Optional[bool] = typer.Option(  # pylint: disable=unused-argument
+        None, "--version", callback=version_callback, is_eager=True
+    ),
+) -> None:
     """Say hello to NAME"""
     rprint(f"Hello {name}")
     # example of using rich-print's MarkUp
@@ -45,8 +68,36 @@ def goodbye(name: str, formal: bool = False) -> None:
 
 
 @app.command()
-def exit_cmd_flag(code: Optional[int] = None):
-    """Exit with a given code - optinonal with *flag* syntax"""
+def pword(
+    name: str,
+    password: str = typer.Option(
+        ...,
+        "--hidden-input-string",
+        prompt=True,
+        confirmation_prompt=True,
+        hide_input=True,
+    ),
+    # NOTE: we would NOT want this as it allows explicit flag calling and regular
+    #       code inputing
+):
+    """Example use of \"hide_input\" true."""
+    print(f"Hello {name}. Doing something very secure with password.")
+    print(f"...just kidding, here it is, very insecure: {password}")
+
+
+##################################################
+@app.command()
+def exit_cmd_flag(
+    code: Optional[int] = typer.Option(
+        None,
+        "--exit-code",
+        "-c",
+        help="Code to exit with.",
+        prompt="Please enter an exit code.",
+        confirmation_prompt=True,
+    )
+):
+    """Exit with a given code - will prompt for code if forgotten"""
     imma_error(code)
 
 
@@ -57,7 +108,7 @@ def exit_cmd_opt(
         help="Code to exit with.",
         show_default="Special: aborted.",
         metavar="exit_code",
-        rich_help_panel="Example Panel"
+        rich_help_panel="Example Panel",
     )
 ):
     """Exit with a given code optional *argument*"""
