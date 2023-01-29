@@ -46,8 +46,6 @@ def goodbye(name: str, formal: bool = False) -> None:
 @app.command()
 def exit_cmd_opt(code: Optional[int] = None):
     """Exit with a given code - uses "Optional[]"""
-    if code is None:
-        code = 0
     imma_error(code)
 
 
