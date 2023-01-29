@@ -44,8 +44,16 @@ def goodbye(name: str, formal: bool = False) -> None:
 
 
 @app.command()
-def exit_cmd_opt(code: Optional[int] = None):
-    """Exit with a given code - uses "Optional[]"""
+def exit_cmd_flag(code: Optional[int] = None):
+    """Exit with a given code - optinonal with *flag* syntax"""
+    imma_error(code)
+
+
+@app.command()
+def exit_cmd_opt(
+    code: Optional[int] = typer.Argument(None, help="Exit with a given code")
+):
+    """Exit with a given code optional *argument*"""
     imma_error(code)
 
 
