@@ -15,7 +15,7 @@ from rich.table import Table
 
 from .other_file import imma_error
 
-app = typer.Typer(help="WHERE does THIS show UP?")
+app = typer.Typer(help="WHERE does THIS show UP?", add_completion=False)
 
 pressure_app = typer.Typer()
 temperature_app = typer.Typer()
