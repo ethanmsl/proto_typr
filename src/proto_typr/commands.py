@@ -7,6 +7,7 @@ import csv
 import os
 from typing import Optional
 import random
+from importlib import metadata
 
 import typer
 from rich import print as rprint
@@ -17,10 +18,10 @@ from .other_file import imma_error
 
 app = typer.Typer(help="WHERE does THIS show UP?", add_completion=False)
 
-pressure_app = typer.Typer()
-temperature_app = typer.Typer()
-app.add_typer(pressure_app, name="pressure")
-app.add_typer(temperature_app, name="temperature")
+# pressure_app = typer.Typer()
+# temperature_app = typer.Typer()
+# app.add_typer(pressure_app, name="pressure")
+# app.add_typer(temperature_app, name="temperature")
 
 
 def hello_callback(value: str):
@@ -29,9 +30,7 @@ def hello_callback(value: str):
         raise typer.BadParameter("Only Camila is allowed")
     return value
 
-
-# NOTE: there must be a better way to get this from the pyproject.toml
-__version__ = "0.1.0"
+__version__ = metadata.version(__package__)
 
 
 def version_callback(value: bool):
@@ -86,7 +85,7 @@ def pword(
 
 
 ##################################################
-@app.command()
+@app.command(rich_help_panel="exits")
 def exit_cmd_flag(
     code: Optional[int] = typer.Option(
         None,
@@ -101,7 +100,7 @@ def exit_cmd_flag(
     imma_error(code)
 
 
-@app.command()
+@app.command(rich_help_panel="exits")
 def exit_cmd_opt(
     code: Optional[int] = typer.Argument(
         None,
@@ -115,7 +114,7 @@ def exit_cmd_opt(
     imma_error(code)
 
 
-@app.command()
+@app.command(rich_help_panel="exits")
 def exit_cmd_req(code: int):
     """Exit with a given code -- code is required"""
     imma_error(code)
