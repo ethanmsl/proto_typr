@@ -6,6 +6,7 @@ However execution occurs in `__main__.py`
 import csv
 import os
 from typing import Optional
+import random
 
 import typer
 from rich import print as rprint
@@ -51,7 +52,13 @@ def exit_cmd_flag(code: Optional[int] = None):
 
 @app.command()
 def exit_cmd_opt(
-    code: Optional[int] = typer.Argument(None, help="Exit with a given code")
+    code: Optional[int] = typer.Argument(
+        None,
+        help="Code to exit with.",
+        show_default="Special: aborted.",
+        metavar="exit_code",
+        rich_help_panel="Example Panel"
+    )
 ):
     """Exit with a given code optional *argument*"""
     imma_error(code)
@@ -61,6 +68,25 @@ def exit_cmd_opt(
 def exit_cmd_req(code: int):
     """Exit with a given code -- code is required"""
     imma_error(code)
+
+
+#######################################################
+def get_name():
+    """Returns a random str from a list"""
+    return random.choice(["Deadpool", "Rick", "Morty", "Hiro"])
+
+
+@app.command()
+def rand_default(
+    name: str = typer.Argument(
+        get_name, help="The name to greet. Can be chosen at random."
+    )
+):
+    """Demonstrates using a function to generate default"""
+    print(f"Hello {name}")
+
+
+########################################################
 
 
 @app.command(short_help="Run an OS command")
