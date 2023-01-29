@@ -7,11 +7,12 @@ readme = "README.md"
 packages = [{include = "proto_typr", from = "src"}]
 
 [tool.poetry.scripts]
-proto-typr = "proto_typr.main:app"
+proto-typr = "proto_typr.commands:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 typer = {extras = ["all"], version = "^0.7.0"}
+requests = "^2.28.2"
 
 
 [tool.poetry.group.dev.dependencies]

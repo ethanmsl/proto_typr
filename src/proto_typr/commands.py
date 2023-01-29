@@ -9,6 +9,11 @@ import typer
 
 app = typer.Typer()
 
+pressure_app = typer.Typer()
+temperature_app = typer.Typer()
+app.add_typer(pressure_app, name="pressure")
+app.add_typer(temperature_app, name="temperature")
+
 
 @app.command()
 def hello(name: str) -> None:
@@ -30,9 +35,10 @@ def goodbye(name: str, formal: bool = False) -> None:
 
 
 @app.command(short_help="Run an OS command")
-def oscmmd() -> None:
-    """Run the oscmmd"""
-    cmd: str = r'echo "testtttting" >> boop.txt'
+def oscmmd(cmd: str) -> None:
+    """Run the input OS Command; defaulting to to writing a test file, 'boop.txt'"""
+    if not cmd:
+        cmd = r'echo "testtttting" >> boop.txt'
     print(os.system(cmd))
 
 

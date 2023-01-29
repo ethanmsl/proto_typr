@@ -2,6 +2,6 @@
 Program entery point.
 """
 
-from proto_typr import main
+from proto_typr import commands
 
-main.app()
+commands.app()
