@@ -18,7 +18,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+# dist/                 # <-- NOTE: removed this; causing dist/ to be committed
 downloads/
 eggs/
 .eggs/
