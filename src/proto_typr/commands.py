@@ -53,9 +53,6 @@ def hello_callback(value: str):
 @app.command("howdy")
 def hello(
     name: str = typer.Argument(..., callback=hello_callback),
-    version: Optional[bool] = typer.Option(  # pylint: disable=unused-argument
-        None, "--version", callback=version_callback, is_eager=True
-    ),
 ) -> None:
     """Say hello to NAME"""
     rprint(f"Hello {name}")
