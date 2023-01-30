@@ -5,9 +5,9 @@ However execution occurs in `__main__.py`
 
 import csv
 import os
-from typing import Optional
 import random
 from importlib import metadata
+from typing import Optional
 
 import typer
 from rich import print as rprint
@@ -16,12 +16,31 @@ from rich.table import Table
 
 from .other_file import imma_error
 
-app = typer.Typer(help="WHERE does THIS show UP?", add_completion=False)
+app = typer.Typer(
+    help="WHERE does THIS show UP?",
+    add_completion=False,
+)
 
 # pressure_app = typer.Typer()
 # temperature_app = typer.Typer()
 # app.add_typer(pressure_app, name="pressure")
 # app.add_typer(temperature_app, name="temperature")
+
+__version__ = metadata.version(__package__)
+
+
+def version_callback(version: bool = typer.Option(None, "--version")):
+    """Callback that returns app version"""
+    if version:
+        print(f"Awesome CLI Version: {__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def app_callback(
+    _: bool = typer.Option(None, "--version", callback=version_callback),
+):
+    """..."""
 
 
 def hello_callback(value: str):
@@ -30,17 +49,8 @@ def hello_callback(value: str):
         raise typer.BadParameter("Only Camila is allowed")
     return value
 
-__version__ = metadata.version(__package__)
 
-
-def version_callback(value: bool):
-    """Callback that returns app version"""
-    if value:
-        print(f"Awesome CLI Version: {__version__}")
-        raise typer.Exit()
-
-
-@app.command()
+@app.command("howdy")
 def hello(
     name: str = typer.Argument(..., callback=hello_callback),
     version: Optional[bool] = typer.Option(  # pylint: disable=unused-argument
