@@ -12,6 +12,7 @@ from typing import Optional
 import typer
 from rich import print as rprint
 from rich.console import Console
+from rich.errors import NotRenderableError
 from rich.table import Table
 
 from .other_file import imma_error
@@ -178,7 +179,7 @@ def print_rows(location: str) -> None:
             rprint(row_list)
             try:
                 table.add_row(*row_list)
-            except ValueError:
+            except NotRenderableError:
                 pass
 
         console.print(table)
