@@ -32,7 +32,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./dev_docs/proto_typr.html  # directory containing site docs
+          source: ./dev_docs  # directory containing site docs
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
