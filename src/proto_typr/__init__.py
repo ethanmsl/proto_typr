@@ -1,3 +1,4 @@
 """
-As this is not a library package no API is defined here.
+This is the nominal landing page, but Jekyl is using the `index.html` file instead.
+... :/
 """
