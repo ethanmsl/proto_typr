@@ -34,10 +34,12 @@ build-backend = "poetry.core.masonry.api"
 profile = "black"
 
 
-# [tool.pylint]
-# disable = [
-#     "R0903",  # Too few public methods
-# ]
+[tool.pylint]
+disable = [
+    # Black cleans trailing whitespace outside of docstrings
+    # inside of docstrings it is used for Markdown formatting
+    "C0303",  # trailing-whitespace
+]
 
 [tool.pylint.format]
 # line length to match Black formatter
