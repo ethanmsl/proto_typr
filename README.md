@@ -1,8 +1,8 @@
 ![tests_badge](https://github.com/ethanmsl/proto_typr/actions/workflows/test-poet.yml/badge.svg)
 
 # proto_typr
-Test Repo for use with [Typer CLI framework](https://typer.tiangolo.com/).
-(Mostly just 'scratch paper' coding to check/explore behavior of framework.)
+Test Repo for use with [Typer CLI framework](https://typer.tiangolo.com/).   
+(Mostly just '**scratch paper**' coding to check/explore behavior of framework.)
 
 
 Example with `proto-typr` installed locally from wheel:
