@@ -56,7 +56,7 @@ def hello(
     name: str = typer.Argument(..., callback=hello_callback),
 ) -> None:
     """
-    Says "hello" to an input name.
+    Says "hello" to an input name.\n
     Uses a callback to ensure only "Camila" is allowed.
     """
     rprint(f"Hello {name}")
@@ -73,8 +73,14 @@ def hello(
 )
 def goodbye(name: str, formal: bool = False) -> None:
     """
-    Says "goodbye" to an input name.
+    Says "goodbye" to an input name.\n
     Uses a `bool` flag to determine formality
+    # One bars
+    ## Two bars
+    ### Three bars
+    #### Four bars
+    ##### Five bars
+    ###### Six bars
     """
     if formal:
         rprint(f"Goodbye {name}. It was a pleasure.")
