@@ -13,10 +13,17 @@ from rich import print as rprint
 # from rich.console import Console
 # from rich.errors import NotRenderableError
 # from rich.table import Table
+# import proto_typr.am_camilla
 
 app = typer.Typer(
     add_completion=False,
 )
+
+
+@app.command(help="""Tell me who you are. Camilla?""")
+def am_camilla(name: str) -> None:
+    """..."""
+    am_camilla.i_am_camilla(name)
 
 
 @app.command("howdy", help="""Say hello to NAME""")

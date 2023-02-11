@@ -38,26 +38,6 @@ def app_callback(
     """..."""
 
 
-def hello_callback(value: str):
-    """Callback for `hello` option"""
-    if value != "Camila":
-        raise typer.BadParameter("Only Camila is allowed")
-    return value
-
-
-# @app.command("howdy", help="""Say hello to NAME""")
-def hello(
-    name: str = typer.Argument(..., callback=hello_callback),
-) -> None:
-    """
-    Says "hello" to an input name.\n
-    Uses a callback to ensure only "Camila" is allowed.
-    """
-    rprint(f"Hello {name}")
-    # example of using rich-print's MarkUp
-    rprint("[bold red]Alert![/bold red] [green]Portal gun[/green] shooting! :boom:")
-
-
 # @app.command(
 #     help="""
 #     Say goodbye to `NAME`
