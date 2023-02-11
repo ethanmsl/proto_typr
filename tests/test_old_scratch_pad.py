@@ -12,18 +12,6 @@ def test_app() -> None:
     assert True
 
 
-def test_hello() -> None:
-    """Test: Say hello to NAME"""
-    assert old_scratch_pad.hello("gloomba") is None
-
-
-def test_goodbye() -> None:
-    """Test:Say goodbye to NAME"""
-    assert old_scratch_pad.goodbye("gloomba") is None
-    assert old_scratch_pad.goodbye("gloombs", False) is None
-    assert old_scratch_pad.goodbye("Madam Gloomba", True) is None
-
-
 def test_print_rows() -> None:
     """Print rows from a file"""
     location: str = "inclusion_dir/some_rows.csv"

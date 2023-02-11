@@ -65,21 +65,6 @@ def hello(
 #     --formal: Use a formal goodbye
 #     """
 # )
-def goodbye(name: str, formal: bool = False) -> None:
-    """
-    Says "goodbye" to an input name.\n
-    Uses a `bool` flag to determine formality
-    # One bars
-    ## Two bars
-    ### Three bars
-    #### Four bars
-    ##### Five bars
-    ###### Six bars
-    """
-    if formal:
-        rprint(f"Goodbye {name}. It was a pleasure.")
-    else:
-        rprint(f"Later {name}.")
 
 
 # @app.command()
