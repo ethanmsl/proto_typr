@@ -59,12 +59,12 @@ def hello(
 
 
 # @app.command(
-    help="""
-    Say goodbye to `NAME`
-
-    --formal: Use a formal goodbye
-    """
-)
+#     help="""
+#     Say goodbye to `NAME`
+#
+#     --formal: Use a formal goodbye
+#     """
+# )
 def goodbye(name: str, formal: bool = False) -> None:
     """
     Says "goodbye" to an input name.\n

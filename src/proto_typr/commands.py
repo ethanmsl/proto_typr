@@ -1,18 +1,18 @@
 """
 Insertion point for poetry.scripts (i.e. CLI app)
 """
-import csv
-import os
-import random
-from importlib import metadata
-from typing import Optional
+# import csv
+# import os
+# import random
+# from importlib import metadata
+# from typing import Optional
 
 import typer
 from rich import print as rprint
-from rich.console import Console
-from rich.errors import NotRenderableError
-from rich.table import Table
 
+# from rich.console import Console
+# from rich.errors import NotRenderableError
+# from rich.table import Table
 
 app = typer.Typer(
     add_completion=False,
