@@ -1,8 +1,8 @@
 """
-Tests for `commands.py`
+Tests for `old_scratch_pad.py`
 """
 
-from proto_typr import commands
+from proto_typr import old_scratch_pad
 
 
 def test_app() -> None:
@@ -14,27 +14,27 @@ def test_app() -> None:
 
 def test_hello() -> None:
     """Test: Say hello to NAME"""
-    assert commands.hello("gloomba") is None
+    assert old_scratch_pad.hello("gloomba") is None
 
 
 def test_goodbye() -> None:
     """Test:Say goodbye to NAME"""
-    assert commands.goodbye("gloomba") is None
-    assert commands.goodbye("gloombs", False) is None
-    assert commands.goodbye("Madam Gloomba", True) is None
+    assert old_scratch_pad.goodbye("gloomba") is None
+    assert old_scratch_pad.goodbye("gloombs", False) is None
+    assert old_scratch_pad.goodbye("Madam Gloomba", True) is None
 
 
 def test_print_rows() -> None:
     """Print rows from a file"""
     location: str = "inclusion_dir/some_rows.csv"
-    assert commands.print_rows(location) is None
+    assert old_scratch_pad.print_rows(location) is None
 
 
 def test_print_cwd() -> None:
     """Print the current working directory"""
-    assert commands.print_cwd() is None
+    assert old_scratch_pad.print_cwd() is None
 
 
 def test_junk_function_for_coverage_report() -> None:
     """test of junk function for coverage report"""
-    assert commands.junk_function_for_coverage_report() is None
+    assert old_scratch_pad.junk_function_for_coverage_report() is None

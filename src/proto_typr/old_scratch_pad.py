@@ -1,6 +1,5 @@
 """
-Contains the bulk of top-level execution code.
-However execution occurs in `__main__.py`
+Old scratch pad for testing out typer and rich-print
 """
 
 import csv
