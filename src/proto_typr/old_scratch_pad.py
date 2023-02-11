@@ -16,11 +16,6 @@ from rich.table import Table
 
 from .other_file import imma_error
 
-app = typer.Typer(
-    help="WHERE does THIS show UP?",
-    add_completion=False,
-)
-
 # pressure_app = typer.Typer()
 # temperature_app = typer.Typer()
 # app.add_typer(pressure_app, name="pressure")
@@ -36,7 +31,7 @@ def version_callback(version: bool = typer.Option(None, "--version")):
         raise typer.Exit()
 
 
-@app.callback()
+# @app.callback()
 def app_callback(
     _: bool = typer.Option(None, "--version", callback=version_callback),
 ):
@@ -50,7 +45,7 @@ def hello_callback(value: str):
     return value
 
 
-@app.command("howdy", help="""Say hello to NAME""")
+# @app.command("howdy", help="""Say hello to NAME""")
 def hello(
     name: str = typer.Argument(..., callback=hello_callback),
 ) -> None:
@@ -63,7 +58,7 @@ def hello(
     rprint("[bold red]Alert![/bold red] [green]Portal gun[/green] shooting! :boom:")
 
 
-@app.command(
+# @app.command(
     help="""
     Say goodbye to `NAME`
 
@@ -87,7 +82,7 @@ def goodbye(name: str, formal: bool = False) -> None:
         rprint(f"Later {name}.")
 
 
-@app.command()
+# @app.command()
 def pword(
     name: str,
     password: str = typer.Option(
@@ -106,7 +101,7 @@ def pword(
 
 
 ##################################################
-@app.command(rich_help_panel="exits")
+# @app.command(rich_help_panel="exits")
 def exit_cmd_flag(
     code: Optional[int] = typer.Option(
         None,
@@ -121,7 +116,7 @@ def exit_cmd_flag(
     imma_error(code)
 
 
-@app.command(rich_help_panel="exits")
+# @app.command(rich_help_panel="exits")
 def exit_cmd_opt(
     code: Optional[int] = typer.Argument(
         None,
@@ -135,7 +130,7 @@ def exit_cmd_opt(
     imma_error(code)
 
 
-@app.command(rich_help_panel="exits")
+# @app.command(rich_help_panel="exits")
 def exit_cmd_req(code: int):
     """Exit with a given code -- code is required"""
     imma_error(code)
@@ -147,7 +142,7 @@ def get_name():
     return random.choice(["Deadpool", "Rick", "Morty", "Hiro"])
 
 
-@app.command()
+# @app.command()
 def rand_default(
     name: str = typer.Argument(
         get_name, help="The name to greet. Can be chosen at random."
@@ -160,7 +155,7 @@ def rand_default(
 ########################################################
 
 
-@app.command(short_help="Run an OS command")
+# @app.command(short_help="Run an OS command")
 def oscmmd(cmd: Optional[str] = None) -> None:
     """Run the input OS Command; defaulting to to writing a test file, 'boop.txt'"""
     if cmd is None:
@@ -171,7 +166,7 @@ def oscmmd(cmd: Optional[str] = None) -> None:
 console = Console()
 
 
-@app.command()
+# @app.command()
 def print_rows(location: str) -> None:
     """Print rows from a file as text then as a table"""
 
@@ -198,7 +193,7 @@ def print_rows(location: str) -> None:
         console.print(table)
 
 
-@app.command()
+# @app.command()
 def print_cwd() -> None:
     """Print the current working directory"""
     rprint(os.getcwd())
