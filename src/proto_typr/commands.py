@@ -10,6 +10,8 @@ Insertion point for poetry.scripts (i.e. CLI app)
 import typer
 from rich import print as rprint
 
+# from .am_camilla import i_am_camilla, am_camilla_callback
+
 # from rich.console import Console
 # from rich.errors import NotRenderableError
 # from rich.table import Table
@@ -20,10 +22,29 @@ app = typer.Typer(
 )
 
 
-@app.command(help="""Tell me who you are. Camilla?""")
-def am_camilla(name: str) -> None:
-    """..."""
-    am_camilla.i_am_camilla(name)
+def am_camilla_callback(value: str):
+    """Callback for `hello` option"""
+    if value != "Camilla":
+        raise typer.BadParameter("Only Camila is allowed")
+    return value
+
+
+@app.command("am-camilla", help="""Tell me who you are. Camilla?""")
+def i_am_camilla(
+    name: str = typer.Argument(..., callback=am_camilla_callback),
+) -> None:
+    """
+    use an input callback
+    """
+    rprint(f"Hello {name}")
+    # example of using rich-print's MarkUp
+    rprint("[bold red]Alert![/bold red] [green]Portal gun[/green] shooting! :boom:")
+
+
+# @app.command("am-camilla", help="""Tell me who you are. Camilla?""")
+# def am_camilla_command(name: str) -> None:
+#     """..."""
+#     i_am_camilla(name)
 
 
 @app.command("howdy", help="""Say hello to NAME""")
