@@ -25,7 +25,7 @@ app = typer.Typer(
 def am_camilla_callback(value: str):
     """Callback for `hello` option"""
     if value != "Camilla":
-        raise typer.BadParameter("Only Camila is allowed")
+        raise typer.BadParameter("Only Camilla is allowed")
     return value
 
 
