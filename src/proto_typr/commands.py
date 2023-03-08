@@ -22,6 +22,16 @@ app = typer.Typer(
 )
 
 
+@app.command("nums")
+def numeric_intake(
+    x_int: int = typer.Argument(..., min=0, max=2),
+    y_int: int = typer.Argument(..., min=-1, max=1),
+) -> int:
+    """testing `min` and `max` restrictions on numeric arguments"""
+    print(f"X: {x_int}, Y: {y_int}")
+    return x_int + y_int
+
+
 def am_camilla_callback(value: str):
     """Callback for `hello` option"""
     if value != "Camilla":
