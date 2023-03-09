@@ -32,13 +32,23 @@ APP_NAME = "proto-typr"
 @app.command("config_write")
 def config_find_and_write(to_write: str) -> None:
     """trying to write to a hypothetical config file"""
-    rprint(f"not doing anything wiht this currently {to_write}")
+    rprint(f"not doing anything wiht this currently: [purple]{to_write}[/purple]")
+
+    # get app dir and convert to a Path
     app_dir = typer.get_app_dir(APP_NAME)
     app_dir_path = Path(app_dir)
+
+    # make the app dir *if* it doesn't exist
     app_dir_path.mkdir(parents=True, exist_ok=True)
+
+    # still don't understand this
     config_path: Path = Path(app_dir) / "config.json"
+
+    # conditionally writing "to" file (and writing file if needed, it seems)
     if not config_path.is_file():
         config_path.write_text('{"version": "1.0.0"}')
+
+    # converting Path back to str to pass to typer.launch
     config_file_str = str(config_path)
     print("Opening config directory")
     typer.launch(config_file_str, locate=True)
