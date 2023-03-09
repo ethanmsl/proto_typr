@@ -8,6 +8,7 @@ Insertion point for poetry.scripts (i.e. CLI app)
 # from typing import Optional
 
 import time
+from pathlib import Path
 
 import typer
 from rich import print as rprint
@@ -24,6 +25,20 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, track
 app = typer.Typer(
     add_completion=False,
 )
+
+
+@app.command("app_dir")
+def get_app_dir() -> None:
+    """Get the app directory"""
+    app_dir = typer.get_app_dir("proto-typr")
+    config_path: Path = Path(app_dir) / "config.json"
+    if not config_path.is_file():
+        rprint(f"Config file not found at {config_path}")
+        raise typer.Abort()
+    rprint(
+        f"using non-typer methods: App directory: {Path(__file__).parent.absolute()}"
+    )
+    rprint(f"typer says: App directory: {config_path}")
 
 
 @app.command("spin")
