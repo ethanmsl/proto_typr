@@ -41,7 +41,7 @@ def config_find_and_write(to_write: str) -> None:
     # make the app dir *if* it doesn't exist
     app_dir_path.mkdir(parents=True, exist_ok=True)
 
-    # still don't understand this
+    # just appends "config.json" to the app dir, using system appropriate path separator
     config_path: Path = Path(app_dir) / "config.json"
 
     # conditionally writing "to" file (and writing file if needed, it seems)
