@@ -7,8 +7,11 @@ Insertion point for poetry.scripts (i.e. CLI app)
 # from importlib import metadata
 # from typing import Optional
 
+import time
+
 import typer
 from rich import print as rprint
+from rich.progress import track
 
 # from .am_camilla import i_am_camilla, am_camilla_callback
 
@@ -17,9 +20,21 @@ from rich import print as rprint
 # from rich.table import Table
 # import proto_typr.am_camilla
 
+
 app = typer.Typer(
     add_completion=False,
 )
+
+
+@app.command("progbar")
+def progress_bar_example(seconds: int = typer.Argument(5, min=1, max=16)) -> None:
+    """Example of a progress bar"""
+
+    total_so_far: int = 0
+    for _ in track(range(seconds), description="Sleeping..."):
+        time.sleep(1)
+        total_so_far += 1
+    rprint(f"Done sleeping for {total_so_far} seconds")
 
 
 @app.command("nums")
