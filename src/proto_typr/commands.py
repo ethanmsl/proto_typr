@@ -44,11 +44,16 @@ def spinner_example(seconds: int = typer.Argument(5, min=1, max=36)) -> None:
 
 @app.command("progbar")
 def progress_bar_example(
-    seconds: int = typer.Argument(5, min=1, max=16), with_impl: bool = False
+    seconds: int = typer.Argument(5, min=1, max=16), plain_bar: bool = False
 ) -> None:
-    """Example of a progress bar"""
+    """
+    Example of a progress bar.
+    Default uses Rich. (colorful, but simple)
+    Use `--plain-bar` to use Typer's progress bar.
+    Which actually has a very nice, minimalist ascii aesthetic.
+    """
 
-    if not with_impl:
+    if not plain_bar:
         total_so_far: int = 0
         for _ in track(range(seconds), description="Sleeping..."):
             time.sleep(1)
