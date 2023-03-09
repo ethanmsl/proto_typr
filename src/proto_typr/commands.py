@@ -11,7 +11,7 @@ import time
 
 import typer
 from rich import print as rprint
-from rich.progress import track
+from rich.progress import Progress, SpinnerColumn, TextColumn, track
 
 # from .am_camilla import i_am_camilla, am_camilla_callback
 
@@ -24,6 +24,22 @@ from rich.progress import track
 app = typer.Typer(
     add_completion=False,
 )
+
+
+@app.command("spin")
+def spinner_example(seconds: int = typer.Argument(5, min=1, max=36)) -> None:
+    """Example of a progress bar"""
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}", justify="right"),
+        transient=True,
+    ) as progress:
+        progress.add_task("Task A...", total=seconds)
+        task = progress.add_task("Task B...", total=seconds)
+        for _ in range(seconds):
+            time.sleep(1)
+            progress.advance(task)
 
 
 @app.command("progbar")
