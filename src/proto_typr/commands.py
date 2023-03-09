@@ -32,13 +32,14 @@ def get_app_dir() -> None:
     """Get the app directory"""
     app_dir = typer.get_app_dir("proto-typr")
     config_path: Path = Path(app_dir) / "config.json"
+    rprint(
+        f"\nusing non-typer methods:\nApp directory: {Path(__file__).parent.absolute()}"
+    )
+    rprint("\nusing typer methods: ...")
     if not config_path.is_file():
         rprint(f"Config file not found at {config_path}")
         raise typer.Abort()
-    rprint(
-        f"using non-typer methods: App directory: {Path(__file__).parent.absolute()}"
-    )
-    rprint(f"typer says: App directory: {config_path}")
+    rprint(f"App directory: {config_path}")
 
 
 @app.command("spin")
