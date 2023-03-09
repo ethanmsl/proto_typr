@@ -26,11 +26,13 @@ app = typer.Typer(
     add_completion=False,
 )
 
+APP_NAME = "proto-typr"
+
 
 @app.command("app_dir")
 def get_app_dir() -> None:
     """Get the app directory"""
-    app_dir = typer.get_app_dir("proto-typr")
+    app_dir = typer.get_app_dir(APP_NAME)
     config_path: Path = Path(app_dir) / "config.json"
     rprint(
         f"\nusing non-typer methods:\nApp directory: {Path(__file__).parent.absolute()}"
