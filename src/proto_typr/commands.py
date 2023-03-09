@@ -29,6 +29,21 @@ app = typer.Typer(
 APP_NAME = "proto-typr"
 
 
+@app.command("config_write")
+def config_find_and_write(to_write: str) -> None:
+    """trying to write to a hypothetical config file"""
+    rprint(f"not doing anything wiht this currently {to_write}")
+    app_dir = typer.get_app_dir(APP_NAME)
+    app_dir_path = Path(app_dir)
+    app_dir_path.mkdir(parents=True, exist_ok=True)
+    config_path: Path = Path(app_dir) / "config.json"
+    if not config_path.is_file():
+        config_path.write_text('{"version": "1.0.0"}')
+    config_file_str = str(config_path)
+    print("Opening config directory")
+    typer.launch(config_file_str, locate=True)
+
+
 @app.command("app_dir")
 def get_app_dir() -> None:
     """Get the app directory"""
