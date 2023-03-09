@@ -43,14 +43,24 @@ def spinner_example(seconds: int = typer.Argument(5, min=1, max=36)) -> None:
 
 
 @app.command("progbar")
-def progress_bar_example(seconds: int = typer.Argument(5, min=1, max=16)) -> None:
+def progress_bar_example(
+    seconds: int = typer.Argument(5, min=1, max=16), with_impl: bool = False
+) -> None:
     """Example of a progress bar"""
 
-    total_so_far: int = 0
-    for _ in track(range(seconds), description="Sleeping..."):
-        time.sleep(1)
-        total_so_far += 1
-    rprint(f"Done sleeping for {total_so_far} seconds")
+    if not with_impl:
+        total_so_far: int = 0
+        for _ in track(range(seconds), description="Sleeping..."):
+            time.sleep(1)
+            total_so_far += 1
+        rprint(f"Done sleeping for {total_so_far} seconds")
+    else:
+        total_so_far_2 = 0
+        with typer.progressbar(range(seconds), label="Sleeping...") as progress:
+            for _ in progress:
+                time.sleep(1)
+                total_so_far_2 += 1
+        rprint(f"Done sleeping for {total_so_far_2} seconds")
 
 
 @app.command("nums")
