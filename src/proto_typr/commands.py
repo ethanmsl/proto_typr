@@ -15,6 +15,11 @@ import typer
 from rich import print as rprint
 from rich.progress import Progress, SpinnerColumn, TextColumn, track
 
+from . import __name__ as APP_NAME
+
+# ^ if I just use `__name__` here, it will be `proto_typr.commands`
+# importing from `.` seems to strip that ... am I importing from parent?
+
 # from .am_camilla import i_am_camilla, am_camilla_callback
 
 # from rich.console import Console
@@ -27,7 +32,16 @@ app = typer.Typer(
     add_completion=False,
 )
 
-APP_NAME = "proto-typr"
+# This is difficult -- I can't seem to find a good way to automatically extract this
+# reading the `pyproject.toml` might not work as I'm not sure if that will be available
+# in the wheel
+# I *could* set it manually and then have a *test* compare its value to the
+# `pyproject.toml` ... unless I can find a specific method (like I used for __version__
+# ... ooh: ...?
+# __version__ = metadata.version(__package__)
+# __name__ = metadata.version(__package__)
+
+# get name of python app
 
 
 @app.callback()
@@ -36,6 +50,7 @@ def check_for_config() -> None:
     app_dir = typer.get_app_dir(APP_NAME)
     config_path: Path = Path(app_dir) / "config.json"
 
+    rprint(f"APP_NAME: {APP_NAME}")
     if not config_path.is_file():
         rprint(f"Config file not found at {config_path}")
         raise typer.Abort()
