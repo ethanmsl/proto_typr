@@ -30,6 +30,20 @@ app = typer.Typer(
 APP_NAME = "proto-typr"
 
 
+@app.callback()
+def check_for_config() -> None:
+    """Check for Config and print accordingly"""
+    app_dir = typer.get_app_dir(APP_NAME)
+    config_path: Path = Path(app_dir) / "config.json"
+
+    if not config_path.is_file():
+        rprint(f"Config file not found at {config_path}")
+        raise typer.Abort()
+
+    whole_file_read = config_path.read_text()
+    rprint(f"Read out: {whole_file_read}")
+
+
 @app.command("confwrite")
 def write_to_config(dir_num: int = typer.Argument(..., min=0)) -> None:
     """write current working dir to config file"""
