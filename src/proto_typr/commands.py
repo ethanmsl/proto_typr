@@ -50,13 +50,16 @@ def check_for_config() -> None:
     app_dir = typer.get_app_dir(APP_NAME)
     config_path: Path = Path(app_dir) / "config.json"
 
+    rprint("----------------------------------------")
     rprint(f"APP_NAME: {APP_NAME}")
+
     if not config_path.is_file():
         rprint(f"Config file not found at {config_path}")
         raise typer.Abort()
 
     whole_file_read = config_path.read_text()
     rprint(f"Read out: {whole_file_read}")
+    rprint("----------------------------------------\n")
 
 
 @app.command("confwrite")
