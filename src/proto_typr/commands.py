@@ -8,6 +8,7 @@ Insertion point for poetry.scripts (i.e. CLI app)
 # from typing import Optional
 
 import time
+from enum import Enum
 from pathlib import Path
 from typing import Optional
 
@@ -60,6 +61,21 @@ def check_for_config() -> None:
     whole_file_read = config_path.read_text()
     rprint(f"Read out: {whole_file_read}")
     rprint("----------------------------------------\n")
+
+
+class Color(str, Enum):
+    """Enum for colors;
+    just here to test enums in Typer"""
+
+    RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
+
+
+@app.command("color")
+def color_print(color: Color) -> None:
+    """prints out a color in said color"""
+    rprint(f"[{color.value}]This is {color}[/{color.value}]")
 
 
 @app.command("confwrite")
