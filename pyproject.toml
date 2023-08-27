@@ -16,20 +16,20 @@ typr = "proto_typr.commands:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-typer = {extras = ["all"], version = "^0.7.0"}
-requests = "^2.31.0"
+typer = {extras = ["all"], version = "^0.9"}
+requests = "^2"
 
 [tool.poetry.urls]
 "issue tracker" = "https://github.com/ethanmsl/proto_typr/issues"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.12.0"
-isort = "^5.11.4"
-pdoc = "^12.3.0"
-pylint = "^2.15.9"
-pyright = "^1.1.287"
-pytest = "^7.2.0"
-pytest-cov = "^4.0.0"
+black = "^22"
+isort = "^5"
+pdoc = "^12"
+pylint = "^2"
+pyright = "^1"
+pytest = "^7"
+pytest-cov = "^4"
 
 
 [build-system]
