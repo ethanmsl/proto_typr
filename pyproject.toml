@@ -17,7 +17,7 @@ typr = "proto_typr.commands:app"
 [tool.poetry.dependencies]
 python = "^3.10"
 typer = {extras = ["all"], version = "^0.7.0"}
-requests = "^2.28.2"
+requests = "^2.31.0"
 
 [tool.poetry.urls]
 "issue tracker" = "https://github.com/ethanmsl/proto_typr/issues"
