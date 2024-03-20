@@ -23,7 +23,7 @@ requests = "^2"
 "issue tracker" = "https://github.com/ethanmsl/proto_typr/issues"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22"
+black = "^24"
 isort = "^5"
 pdoc = "^12"
 pylint = "^2"
